@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Carousel from "./Carousel";
 
 const HomePage = () => {
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = () => {
+    setIsActive(true);
+  };
   return (
     <>
       {/* LE HEADER  */}
       <Header>
         <LogoHorizontal src="logo-horizontal.png"></LogoHorizontal>
         <Link to="/test-page">
-          <ButtonHeader> FAIS LE TEST MAINTENANT</ButtonHeader>
+          <ButtonHeader>FAIS LE TEST MAINTENANT</ButtonHeader>
         </Link>
       </Header>
 
@@ -25,7 +30,15 @@ const HomePage = () => {
             aptent taciti sociosqu ad litora torquet perconubia nostra, per
             inceptos himenaeos.
           </Text>
-          <ButtonFirstBlock>FAIS LE TEST MAINTENANT</ButtonFirstBlock>
+          <ButtonFirstBlock
+            style={{
+              backgroundColor: isActive ? "white" : "",
+              color: isActive ? "#edb046" : "",
+            }}
+            onClick={handleClick}
+          >
+            FAIS LE TEST MAINTENANT
+          </ButtonFirstBlock>
         </SubContainer>
         <BrasMecano src="bras-mécano.png"></BrasMecano>
       </FirstBlock>
